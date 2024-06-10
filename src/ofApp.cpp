@@ -51,8 +51,8 @@ ofApp::ofApp(Graph* _G, Solution* _P, bool _flg_capture_only)
       flg_snapshot(flg_capture_only),
       flg_zoomout(false),
       flg_zoomin(false),
-      flg_grid(true),
-      line_mode(flg_capture_only ? LINE_MODE::PATH : LINE_MODE::STRAIGHT)
+      flg_grid(false),
+      line_mode(LINE_MODE::NONE)
 {
 }
 
@@ -69,7 +69,7 @@ void ofApp::setup()
   // setup gui
   gui.setup();
   gui.add(timestep_slider.setup("time step", 0, 0, T));
-  gui.add(speed_slider.setup("speed", 0.1, 0, 1));
+  gui.add(speed_slider.setup("speed", 1.0, 0, 1));
 
   cam.setVFlip(true);
   cam.setGlobalPosition(ofVec3f(w / 2, h / 2 - window_y_top_buffer / 2, 580));
